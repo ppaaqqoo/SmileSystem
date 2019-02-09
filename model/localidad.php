@@ -7,7 +7,6 @@ class Localidad
 	public $localidad;
 	public $ambito;
 	public $estado;
-	public $mensaje;
 
 	public function __CONSTRUCT()
 	{
@@ -112,6 +111,7 @@ class Localidad
 		$resultado=$sql->execute(
 			array($idLocalidad)
 			);
+		echo "Hola";
 		return $sql->fetch(PDO::FETCH_OBJ,PDO::FETCH_ASSOC);
 	}
 }
