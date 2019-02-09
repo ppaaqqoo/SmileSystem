@@ -7,10 +7,11 @@ class Localidad
 	public $localidad;
 	public $ambito;
 	public $estado;
+	public $mensaje;
 
 	public function __CONSTRUCT()
 	{
-		$this->pdo = Database::StartUp();     
+		$this->pdo = Database::StartUp();
 	}
 
 	public function ImportarLocalidad(Localidad $data){
@@ -36,9 +37,9 @@ class Localidad
 	}
 
 	public function Limpiar($nomTabla)
-	{	
+	{
 		$stm = $this->pdo
-		->prepare("DELETE FROM $nomTabla");			          
+		->prepare("DELETE FROM $nomTabla");
 
 		$stm->execute();
 	}
@@ -53,7 +54,7 @@ class Localidad
 
 	public function Eliminar(Localidad $data)
 	{
-		$sql = "UPDATE localidades SET 
+		$sql = "UPDATE localidades SET
 		estado = ?
 		WHERE idLocalidad = ?";
 
@@ -69,7 +70,7 @@ class Localidad
 
 	public function Actualizar(Localidad $data)
 	{
-		$sql = "UPDATE localidades SET 
+		$sql = "UPDATE localidades SET
 		idLocalidad = ?, municipio = ?, localidad= ?, ambito = ?, estado = ? WHERE idLocalidad = ?";
 
 		$this->pdo->prepare($sql)
@@ -85,7 +86,7 @@ class Localidad
 				)
 			);
 	}
-	
+
 	//Metdod para registrar la localidad
 	public function Registrar(Localidad $data)
 	{
